@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "SmartCoffee"
+version = "1.0.0"
+id = "artifacts/smart-coffee"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23766
+
+[services.development]
+run = "pnpm --filter @workspace/smart-coffee run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/smart-coffee", "run", "build" ]
+publicDir = "artifacts/smart-coffee/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23766"
+BASE_PATH = "/"
