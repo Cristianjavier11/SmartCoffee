@@ -23,6 +23,7 @@ export interface Order {
   total: number;
   timestamp: string;
   customerName: string;
+  notes?: string;
 }
 
 export interface Stats {
