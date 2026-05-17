@@ -7,15 +7,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-const categories = ["All", "Espresso", "Specialty", "Cold Brew", "Food"];
+const categories = ["Todos", "Café", "Especialidad", "Frío", "Postres"];
 
 export default function Menu() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("Todos");
   const [searchQuery, setSearchQuery] = useState("");
   const [cart, setCart] = useState<MenuItem[]>([]);
 
   const filteredItems = mockMenuItems.filter(item => {
-    const matchesCategory = activeCategory === "All" || item.category === activeCategory;
+    const matchesCategory = activeCategory === "Todos" || item.category === activeCategory;
     const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           item.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
