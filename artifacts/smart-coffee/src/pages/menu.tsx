@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { Search, ShoppingCart, Plus } from "lucide-react";
 import { mockMenuItems, MenuItem } from "@/lib/data";
@@ -10,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 const categories = ["Todos", "Café", "Especialidad", "Frío", "Postres"];
 
 export default function Menu() {
+  const [, setLocation] = useLocation();
   const [activeCategory, setActiveCategory] = useState("Todos");
   const [searchQuery, setSearchQuery] = useState("");
   const [cart, setCart] = useState<MenuItem[]>([]);
@@ -23,6 +25,11 @@ export default function Menu() {
 
   const addToCart = (item: MenuItem) => {
     setCart([...cart, item]);
+  };
+
+  const handleCreateOrder = () => {
+    localStorage.setItem("smartcoffee_draft_cart", JSON.stringify(cart));
+    setLocation("/orders");
   };
 
   return (
@@ -119,8 +126,8 @@ export default function Menu() {
           <div className="font-semibold">
             ${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}
           </div>
-          <Button variant="secondary" size="sm" className="rounded-full px-6 ml-2">
-            Ver Carrito
+          <Button variant="secondary" size="sm" className="rounded-full px-6 ml-2" onClick={handleCreateOrder}>
+            Crear una orden
           </Button>
         </motion.div>
       )}

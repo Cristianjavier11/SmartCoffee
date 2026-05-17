@@ -42,7 +42,29 @@ export default function Orders() {
   const [notes, setNotes] = useState("");
   const [selectedProduct, setSelectedProduct] = useState("");
   const [quantity, setQuantity] = useState<number>(1);
-  const [draftItems, setDraftItems] = useState<OrderItem[]>([]);
+  const [draftItems, setDraftItems] = useState<OrderItem[]>(() => {
+    const savedCart = localStorage.getItem("smartcoffee_draft_cart");
+    if (savedCart) {
+      try {
+        const parsedCart = JSON.parse(savedCart) as { id: string }[];
+        const itemMap = new Map<string, number>();
+        parsedCart.forEach(item => {
+          itemMap.set(item.id, (itemMap.get(item.id) || 0) + 1);
+        });
+        
+        const initialDrafts: OrderItem[] = [];
+        itemMap.forEach((quantity, id) => {
+          initialDrafts.push({ menuItemId: id, quantity });
+        });
+        
+        localStorage.removeItem("smartcoffee_draft_cart");
+        return initialDrafts;
+      } catch (e) {
+        return [];
+      }
+    }
+    return [];
+  });
 
   const filteredOrders = orders.filter(order => 
     filter === "All" ? true : order.status === filter
