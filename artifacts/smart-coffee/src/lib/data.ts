@@ -39,6 +39,8 @@ export interface AIRecommendation {
   reason: string;
   matchScore: number;
   tags: string[];
+  price?: number;
+  message?: string;
 }
 
 export const mockMenuItems: MenuItem[] = [
