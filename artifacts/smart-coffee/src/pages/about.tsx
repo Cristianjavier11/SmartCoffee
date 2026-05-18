@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
-import { Coffee, Code, Heart } from "lucide-react";
+import { Coffee, Info, Target, Users, Wrench, BrainCircuit, CheckCircle } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function About() {
   return (
-    <div className="max-w-3xl mx-auto pb-12">
+    <div className="max-w-4xl mx-auto pb-12">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -14,42 +15,113 @@ export default function About() {
             <Coffee className="h-8 w-8 text-primary" />
           </div>
           <h1 className="text-4xl font-serif font-bold text-foreground mb-4">
-            Sobre SmartCoffee
+            SmartCoffee
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            El futuro del café de especialidad.
+            Acerca del proyecto
           </p>
         </div>
 
-        <div className="space-y-12">
-          <section>
-            <h2 className="text-2xl font-serif font-semibold mb-4">Nuestra Historia</h2>
-            <div className="prose prose-stone dark:prose-invert max-w-none text-muted-foreground text-lg leading-relaxed">
+        <div className="space-y-8">
+          <Card className="border-primary/20 shadow-sm">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-2xl font-serif">
+                <Info className="h-6 w-6 text-primary" />
+                Descripción general
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-muted-foreground text-lg leading-relaxed">
               <p>
-                SmartCoffee nació de una premisa simple: ¿qué pasaría si pudiéramos combinar la calidez y precisión de un barista experto con la capacidad de personalización de la inteligencia artificial?
+                SmartCoffee es una aplicación web para una cafetería que permite visualizar productos, registrar pedidos y recibir recomendaciones automáticas de bebidas mediante reglas simuladas de Inteligencia Artificial.
               </p>
-              <p>
-                No somos solo una cafetería, somos una experiencia. Diseñamos cada aspecto de nuestro menú para ser no solo delicioso, sino adaptable a tu momento exacto del día.
+              <p className="mt-4">
+                La aplicación cuenta con diferentes pantallas: un dashboard principal, un menú de productos, un módulo de pedidos, una sección de recomendación IA y una sección informativa sobre el proyecto. No utiliza una base de datos real, ya que los pedidos se guardan de manera local mediante LocalStorage, permitiendo conservar la información aunque se recargue la página.
               </p>
-            </div>
-          </section>
+              <p className="mt-4">
+                El sistema está diseñado con una interfaz sencilla, moderna y fácil de usar, utilizando colores relacionados con el ambiente de una cafetería, como tonos café, beige, crema y blanco.
+              </p>
+            </CardContent>
+          </Card>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-card border border-border p-6 rounded-xl">
-              <Code className="h-8 w-8 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Tecnología</h3>
-              <p className="text-muted-foreground">
-                Impulsado por un motor de recomendaciones inteligente que entiende los perfiles de sabor, la química del café y tus necesidades energéticas.
+          <Card className="border-primary/20 shadow-sm">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-2xl font-serif">
+                <Target className="h-6 w-6 text-primary" />
+                Objetivo del sistema
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-muted-foreground text-lg leading-relaxed">
+              <p>
+                El objetivo principal de SmartCoffee es desarrollar una aplicación web que permita a una cafetería gestionar productos y pedidos de forma sencilla, además de ofrecer recomendaciones personalizadas mediante una función de Inteligencia Artificial simulada.
               </p>
-            </div>
-            <div className="bg-card border border-border p-6 rounded-xl">
-              <Heart className="h-8 w-8 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Artesanía</h3>
-              <p className="text-muted-foreground">
-                Aunque amamos la tecnología, nuestro café es 100% analógico. Granos de origen único, tostados con maestría y extraídos a la perfección.
+              <p className="mt-4">
+                También busca demostrar el uso de tecnologías web modernas y el trabajo colaborativo mediante GitHub, donde cada integrante del equipo participa en el desarrollo de diferentes módulos del sistema.
               </p>
-            </div>
+            </CardContent>
+          </Card>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="border-primary/20 shadow-sm">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-2xl font-serif">
+                  <Users className="h-6 w-6 text-primary" />
+                  Integrantes del equipo
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-lg leading-relaxed">
+                <ul className="list-disc list-inside space-y-2">
+                  <li>Cristian Javier Padilla Cornejo</li>
+                  <li>Ian Michael Castellanos Zuñiga</li>
+                  <li>Marco Antonio Martinez Guzman</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary/20 shadow-sm">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-2xl font-serif">
+                  <Wrench className="h-6 w-6 text-primary" />
+                  Tecnologías utilizadas
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-muted-foreground text-lg leading-relaxed">
+                <ul className="list-disc list-inside space-y-2">
+                  <li>React</li>
+                  <li>Vite</li>
+                  <li>JavaScript</li>
+                  <li>Tailwind CSS</li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
+
+          <Card className="border-primary/20 shadow-sm">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-2xl font-serif">
+                <BrainCircuit className="h-6 w-6 text-primary" />
+                Explicación del uso de IA
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-muted-foreground text-lg leading-relaxed">
+              <p>
+                El proyecto integra una función de recomendación con Inteligencia Artificial simulada, la cual permite sugerir bebidas de acuerdo con los gustos escritos por el usuario. De esta manera, la aplicación no solo funciona como un sistema de pedidos, sino también como una herramienta interactiva que mejora la experiencia del cliente.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border-primary/20 shadow-sm">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-2xl font-serif">
+                <CheckCircle className="h-6 w-6 text-primary" />
+                Conclusión general
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-muted-foreground text-lg leading-relaxed">
+              <p>
+                SmartCoffee ha sido desarrollado como un proyecto integral que demuestra la capacidad de crear aplicaciones web funcionales y atractivas sin depender de un backend complejo, apoyándose en el almacenamiento local y en una experiencia de usuario fluida, interactiva y enriquecida con componentes modernos y lógica simulada.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </motion.div>
     </div>
