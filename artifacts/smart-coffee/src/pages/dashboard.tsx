@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { delay, duration: 0.4, ease: "easeOut" },
+  transition: { delay, duration: 0.4, ease: "easeOut" as const },
 });
 
 export default function Dashboard() {
@@ -242,7 +242,7 @@ export default function Dashboard() {
               <BarChart3 size={16} className="text-primary" />
               Productos por categoría
             </div>
-            {(["Espresso", "Specialty", "Cold Brew", "Food"] as const).map((cat) => {
+            {(["Café", "Especialidad", "Frío", "Postres"] as const).map((cat) => {
               const count = mockMenuItems.filter((m) => m.category === cat).length;
               const pct = Math.round((count / totalProducts) * 100);
               return (
@@ -256,7 +256,7 @@ export default function Dashboard() {
                       className="h-full rounded-full bg-primary"
                       initial={{ width: 0 }}
                       animate={{ width: `${pct}%` }}
-                      transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" }}
+                      transition={{ delay: 0.8, duration: 0.6, ease: "easeOut" as const }}
                     />
                   </div>
                 </div>
